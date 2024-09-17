@@ -11,13 +11,24 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor= "let product of products; let i = index" >
+        @for ( product of products; track product.id; let i = $index){
+        <tr>
             <td>{{i + 1}}</td>
             <td>{{product.name}}</td>
             <td>{{product.price}}</td>
             <td>{{product.code}}</td>
             <td>{{product.available}}</td>
             <td>{{product.starRating}}</td>
+            <td><button class="btn btn-danger" (click)="DeleteProduct(product.id)">Delete </button></td>
+            <button class="btn btn-warning"(click) = "getProduct(product)">Chi tiet</button>
         </tr>
+        }@empty {
+            <td>Ko co san pham nao</td>
+        }
+
+      
     </tbody>
 </table>
+@if(selectedProduct){
+    <app-product-detail [product]="selectedProduct"></app-product-detail>
+}

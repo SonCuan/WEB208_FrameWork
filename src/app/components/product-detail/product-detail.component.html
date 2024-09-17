@@ -1,0 +1,12 @@
+@if(product){
+<div class="card" style="width: 18rem;">
+    <img [src]="" class="card-img-top" alt="{{ product.name }}">
+    <div class="card-body">
+      <h5 class="card-title">Tên Sản Phẩm: {{ product.name }}</h5>
+      <p class="card-text">Mã: {{ product.code }}</p>
+      <a href="#" class="btn btn-primary">Tình trạng: {{ product.available ? 'Còn hàng' : 'Hết hàng' }}</a>
+      <p class="card-text">Đánh giá: {{ product.starRating }}</p>
+      <p class="card-text">Price: {{ product.price }}</p>
+    </div>
+  </div>
+}

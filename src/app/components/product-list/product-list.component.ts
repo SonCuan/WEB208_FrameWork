@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { Product } from '../../interface/product';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [ProductDetailComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
+  selectedProduct! : Product
   products : Product[] = [
     { id: 1, name: 'Laptop', price: 999.99, code: 1001, available: true, starRating: 4.5 },
     { id: 2, name: 'Smartphone', price: 499.99, code: 1002, available: true, starRating: 4.0 },
@@ -22,4 +23,12 @@ export class ProductListComponent {
     { id: 9, name: 'Printer', price: 89.99, code: 1009, available: false, starRating: 3.9 },
     { id: 10, name: 'External Hard Drive', price: 129.99, code: 1010, available: true, starRating: 4.7 }
   ]
+  DeleteProduct (id : number ) { 
+    if(confirm("Ban co muon xoa khong ? ")) { 
+      this.products = this.products.filter(product => product.id !== id);
+    }
+  }
+  getProduct (product : Product) {
+    this.selectedProduct = product;
+  }
 }
