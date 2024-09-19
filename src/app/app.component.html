@@ -24,7 +24,7 @@
   </tbody>
 </table>
 
-<button class="btn btn-primary" (click)="renderProduct()" >Hien san pham</button>
+<!-- <button class="btn btn-primary" (click)="renderProduct()" >Hien san pham</button> -->
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -42,5 +42,7 @@
 
 <app-counter></app-counter>
 
-<app-product-list></app-product-list>
+
+<app-product-add (onAdd)= "onHandleAdd($event)" ></app-product-add>
+<app-product-list [products] = "products"></app-product-list>
 
