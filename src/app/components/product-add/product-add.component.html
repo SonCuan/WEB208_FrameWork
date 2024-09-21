@@ -3,11 +3,48 @@
 <form action= "" (ngSubmit) = "onSubmit(formAdd)" #formAdd = "ngForm">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Ten san pham</label>
-      <input type="text"  class="form-control" id="name" ngModel name="name">
+      <input type="text"  class="form-control" id="name" ngModel name="name" required minlength="6">
+    </div>
+    <div *ngIf="formAdd.controls['name']?.invalid && (formAdd.controls['name'].dirty || formAdd.controls['name'].touched) ">
+      <div *ngIf= "formAdd.controls['name'].errors?.['required']">  Ten san pham khong duoc de trong</div>
+      <div *ngIf= "formAdd.controls['name'].errors?.['minlength']">  Nhap it nhat 6 ky tu </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Price</label>
-      <input type="number"  class="form-control" id="price" ngModel name="price">
+      <input type="number"  class="form-control" id="price" ngModel name="price" required min="0" >
     </div>
+    <div *ngIf="formAdd.controls['price']?.invalid && (formAdd.controls['price'].dirty || formAdd.controls['price'].touched) ">
+      <div *ngIf= "formAdd.controls['price'].errors?.['required']">  Gia khong duoc de trong</div>
+      <div *ngIf= "formAdd.controls['price'].errors?.['min']">  Gia phai lon hon 0 </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Anh san pham</label>
+      <input type="text"  class="form-control" id="text" ngModel name="imageUrl" required >
+    </div>
+    <div *ngIf="formAdd.controls['imageUrl']?.invalid && (formAdd.controls['imageUrl'].dirty || formAdd.controls['imageUrl'].touched) ">
+      <div *ngIf= "formAdd.controls['imageUrl'].errors?.['required']">  Gia khong duoc de trong</div>
+    </div>
+    <div class="mb-3">
+      <label >Danh mục</label>
+      <select name="category" class="form-select" ngModel required >
+          <option value="1">Danh mục A</option>
+          <option value="2">Danh mục B</option>
+      </select>
+      <div *ngIf="formAdd.controls['category']?.invalid && (formAdd.controls['category'].dirty || formAdd.controls['category'].touched) ">
+        <div *ngIf= "formAdd.controls['category'].errors?.['required']">  Vui long chon danh muc </div>
+      </div>
+    </div>
+  
+  <div class="form-group">
+    <label>Loại sản phẩm</label>
+    <input type="radio" name="type" value="Loại 1" ngModel />
+    Loại 1
+    <input type="radio" name="type" value="Loại 2" ngModel />
+    Loại 2<br />
+  </div>
+  <div class="form-group">
+    <label>Status: </label>
+    <input  type="checkbox" name="available" ngModel />
+  </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
