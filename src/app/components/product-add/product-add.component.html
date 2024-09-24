@@ -35,16 +35,19 @@
       </div>
     </div>
   
-  <div class="form-group">
+  <div class="form-check">
     <label>Loại sản phẩm</label>
-    <input type="radio" name="type" value="Loại 1" ngModel />
+    <input type="radio" name="type" value="Loại 1" ngModel required />
     Loại 1
-    <input type="radio" name="type" value="Loại 2" ngModel />
+    <input type="radio" name="type" value="Loại 2" ngModel required />
     Loại 2<br />
+    <div *ngIf="formAdd.controls['type']?.invalid && (formAdd.controls['type'].dirty || formAdd.controls['type'].touched) ">
+      <div *ngIf= "formAdd.controls['type'].errors?.['required']">  Vui long chon loai san pham </div>
+    </div>
   </div>
   <div class="form-group">
     <label>Status: </label>
-    <input  type="checkbox" name="available" ngModel />
+    <input  type="checkbox"  name="available" ngModel />
   </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

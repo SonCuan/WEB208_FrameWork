@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Inventor } from './interface.inventor';
-import { CounterComponent } from './components/counter/counter.component';
+
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { Product } from './interface/product';
@@ -10,7 +10,7 @@ import { Product } from './interface/product';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CounterComponent, ProductListComponent, ProductAddComponent ],
+  imports: [RouterOutlet, ProductListComponent, ProductAddComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
