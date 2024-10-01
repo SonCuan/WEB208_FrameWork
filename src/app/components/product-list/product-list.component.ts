@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
-import { Product } from '../../interface/product';
+import { IProduct } from '../../interface/product';
 
 @Component({
   selector: 'app-product-list',
@@ -10,15 +10,15 @@ import { Product } from '../../interface/product';
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
-  @Input ()  products! : Product[];
-  selectedProduct! : Product
+  @Input ()  products! : IProduct[];
+  selectedProduct! : IProduct
  
   DeleteProduct (id : number ) { 
     if(confirm("Ban co muon xoa khong ? ")) { 
       this.products = this.products.filter(product => product.id !== id);
     }
   }
-  getProduct (product : Product) {
+  getProduct (product : IProduct) {
     this.selectedProduct = product;
   }
 }

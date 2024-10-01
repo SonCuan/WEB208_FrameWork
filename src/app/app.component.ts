@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Inventor } from './interface.inventor';
 
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
-import { Product } from './interface/product';
+import { IProduct } from './interface/product';
 
 
 @Component({
@@ -15,7 +14,7 @@ import { Product } from './interface/product';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  products : Product[] = [
+  products : IProduct[] = [
     { id: 1, name: 'Laptop', price: 999.99, code: 1001, available: true, starRating: 4.5 },
     { id: 2, name: 'Smartphone', price: 499.99, code: 1002, available: true, starRating: 4.0 },
     { id: 3, name: 'Headphones', price: 79.99, code: 1003, available: true, starRating: 4.2 },
@@ -41,75 +40,28 @@ export class AppComponent {
     picture : "https://picsum.photos/200",
     agvScore : 10
   }
-  inventors: Inventor[] = [ 
-    { id: 1, first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
-    { id: 2, first: 'Son Quan', last: 'Quan', year: 2004, passed: 2024 },
-    { id: 3, first: 'Tran Hoan', last: 'Hoan', year: 2004, passed: 2024 },
-    { id: 4, first: 'Van Hop', last: 'Hop', year: 2004, passed: 2024 },
-  ];
  
-  // products: Product[] = [
-  //   {
-  //     productId: 1,
-  //     productName: 'Leaf Cake', 
-  //     productCode: 'GDN-0011',
-  //     releaseDate: 'March 19, 2019',
-  //     price: 19.95,
-  //     description: 'Leaf rake with 48-inch wooden handle.',
-  //     starRating: 3.2,
-  //     imageUrl: 'https://picsum.photos/100'
-  //   },
-  //   {
-  //     productId: 2,
-  //     productName: 'Tu lanh',
-  //     productCode : 'GDN-0023',
-  //     releaseDate : 'March 18, 2019',
-  //     price : 32.99,
-  //     description : '15 gallon capacity rolling garden cart',
-  //     starRating : 4.2,
-  //     imageUrl : 'https://picsum.photos/100'
-  //   },
-  //   {
-  //     productId: 3,
-  //     productName: 'Dieu Hoa',
-  //     productCode : 'GDN-0023',
-  //     releaseDate : 'March 18, 2019',
-  //     price : 32.99,
-  //     description : '15 gallon capacity rolling garden cart',
-  //     starRating : 4.2,
-  //     imageUrl : 'https://picsum.photos/100'
-  //   },
-  //   {
-  //     productId: 4,
-  //     productName: 'Quat Tran',
-  //     productCode : 'GDN-0023',
-  //     releaseDate : 'March 18, 2019',
-  //     price : 32.99,
-  //     description : '15 gallon capacity rolling garden cart',
-  //     starRating : 4.2,
-  //     imageUrl : 'https://picsum.photos/100'
-  //   }
-  // ]
+
   getProfile (){ 
     return `trash`
   }
 
 
-  renderInventor() : void {
-    const innerHTML = this.inventors.map(inventor => {
-      return `<tr>
-        <td>${inventor.id}</td>
-        <td>${inventor.first}</td>
-        <td>${inventor.last}</td>
-        <td>${inventor.year}</td>
-        <td>${inventor.passed}</td>
-      </tr>`;
-    }).join('');
-    const tableTbody = document.querySelector("#inventor");
-    if(tableTbody) {
-      tableTbody.innerHTML = innerHTML;
-    }
-  }
+  // renderInventor() : void {
+  //   const innerHTML = this.inventors.map(inventor => {
+  //     return `<tr>
+  //       <td>${inventor.id}</td>
+  //       <td>${inventor.first}</td>
+  //       <td>${inventor.last}</td>
+  //       <td>${inventor.year}</td>
+  //       <td>${inventor.passed}</td>
+  //     </tr>`;
+  //   }).join('');
+  //   const tableTbody = document.querySelector("#inventor");
+  //   if(tableTbody) {
+  //     tableTbody.innerHTML = innerHTML;
+  //   }
+  // }
 
   // renderProduct():void {
   //   const innerHTML = this.products.map (product => { 
@@ -128,7 +80,6 @@ export class AppComponent {
   //   }
   // }
   onHandleAdd(products : any) { 
-    console.log(products);
     this.products = [...this.products , products];
   }
  }
